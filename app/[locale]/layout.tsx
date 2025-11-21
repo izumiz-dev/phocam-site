@@ -24,11 +24,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Google Fonts: DM Sans (English) & Zen Kaku Gothic New (Japanese) */}
+        {/* Google Fonts: DM Sans (English) & Noto Sans JP (Japanese) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
         />
         {/* Pretendard (Korean) */}
