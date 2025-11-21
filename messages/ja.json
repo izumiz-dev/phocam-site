@@ -21,8 +21,8 @@
       "description": "カメラを起動して、フォトカードをオーバーレイ。サイズや位置を調整して、完璧な一枚を撮影。"
     },
     "flexibleSize": {
-      "title": "自由なサイズ調整",
-      "description": "0.5倍から5倍まで、シーンに合わせてフォトカードのサイズを調整できます。"
+      "title": "広角・ズーム対応",
+      "description": "広角レンズから望遠ズームまで対応。シーンに合わせて最適なズームレベルで撮影できます。（対応範囲は端末により異なります）"
     },
     "shareEasily": {
       "title": "保存・共有",
@@ -38,7 +38,7 @@
     "subtitle": "iOS・Android対応",
     "testflight": "TestFlightで試す",
     "apk": "APKをダウンロード",
-    "testflightNote": "iOSベータ版",
+    "testflightNote": "iOS版",
     "apkNote": "Android版",
     "comingSoon": "準備中"
   },

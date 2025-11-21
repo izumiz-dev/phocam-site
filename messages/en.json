@@ -21,8 +21,8 @@
       "description": "Launch the camera, overlay your photocard, adjust size and position, and capture the perfect shot."
     },
     "flexibleSize": {
-      "title": "Flexible Sizing",
-      "description": "Adjust photocard size from 0.5x to 5x to match any scene."
+      "title": "Wide-Angle & Zoom Support",
+      "description": "Supports wide-angle to telephoto zoom. Shoot at the optimal zoom level for any scene. (Range varies by device)"
     },
     "shareEasily": {
       "title": "Save & Share",
@@ -38,7 +38,7 @@
     "subtitle": "Available for iOS & Android",
     "testflight": "Try on TestFlight",
     "apk": "Download APK",
-    "testflightNote": "iOS Beta",
+    "testflightNote": "iOS",
     "apkNote": "Android Version",
     "comingSoon": "Coming Soon"
   },
