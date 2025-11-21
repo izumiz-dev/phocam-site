@@ -1,0 +1,7 @@
+# Redirect root to default locale (Japanese)
+/  /ja/  302
+
+# Redirect locale paths without trailing slash
+/ja  /ja/  301
+/en  /en/  301
+/ko  /ko/  301
