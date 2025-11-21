@@ -25,11 +25,20 @@ export async function generateMetadata({
       type: 'website',
       locale: locale,
       siteName: 'Phocam',
+      images: [
+        {
+          url: `/og/opengraph-image-${locale}.png`,
+          width: 1200,
+          height: 630,
+          alt: 'Phocam',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('ogTitle'),
       description: t('ogDescription'),
+      images: [`/og/opengraph-image-${locale}.png`],
     },
   };
 }
