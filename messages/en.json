@@ -1,0 +1,48 @@
+{
+  "header": {
+    "features": "Features",
+    "download": "Download"
+  },
+  "hero": {
+    "title": "Capture Moments with Your Photocard",
+    "subtitle": "Make every day special with your bias",
+    "description": "Phocam lets you take photos with your precious photocards. Create beautiful manner shots, effortlessly.",
+    "downloadButton": "Download"
+  },
+  "features": {
+    "title": "Features",
+    "subtitle": "Simple and Easy to Use",
+    "multipleCards": {
+      "title": "Add Multiple Cards",
+      "description": "Add as many of your favorite photocards as you want and save them for easy access."
+    },
+    "easyCapture": {
+      "title": "Easy Capture",
+      "description": "Launch the camera, overlay your photocard, adjust size and position, and capture the perfect shot."
+    },
+    "flexibleSize": {
+      "title": "Flexible Sizing",
+      "description": "Adjust photocard size from 0.5x to 5x to match any scene."
+    },
+    "shareEasily": {
+      "title": "Save & Share",
+      "description": "Easily save and share your photos. Post on social media and enjoy with fellow fans."
+    }
+  },
+  "screenshots": {
+    "title": "How It Works",
+    "subtitle": "Simple interface you can understand at a glance"
+  },
+  "download": {
+    "title": "Download Now",
+    "subtitle": "Available for iOS & Android",
+    "testflight": "Try on TestFlight",
+    "apk": "Download APK",
+    "testflightNote": "iOS Beta",
+    "apkNote": "Android Version"
+  },
+  "footer": {
+    "description": "Make every day special with your bias",
+    "rights": "All rights reserved."
+  }
+}
