@@ -2,6 +2,8 @@ import { useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+const SECTION_KEYS = ['intro', 'dataCollection', 'dataUsage', 'dataSecurity', 'thirdParty', 'changes'] as const;
+
 export default function PrivacyPage() {
   const t = useTranslations('privacyPage');
 
@@ -18,53 +20,14 @@ export default function PrivacyPage() {
 
           {/* Sections */}
           <div className="space-y-12">
-            {/* Introduction */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.intro.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.intro.content')}
-              </p>
-            </section>
-
-            {/* Data Collection */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.dataCollection.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.dataCollection.content')}
-              </p>
-            </section>
-
-            {/* Data Usage */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.dataUsage.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.dataUsage.content')}
-              </p>
-            </section>
-
-            {/* Data Security */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.dataSecurity.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.dataSecurity.content')}
-              </p>
-            </section>
-
-            {/* Third Party */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.thirdParty.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.thirdParty.content')}
-              </p>
-            </section>
-
-            {/* Changes */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.changes.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.changes.content')}
-              </p>
-            </section>
+            {SECTION_KEYS.map((key) => (
+              <section key={key}>
+                <h2 className="text-2xl font-bold mb-4">{t(`sections.${key}.title`)}</h2>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {t(`sections.${key}.content`)}
+                </p>
+              </section>
+            ))}
           </div>
         </div>
       </main>

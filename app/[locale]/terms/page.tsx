@@ -2,6 +2,8 @@ import { useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+const SECTION_KEYS = ['agreement', 'service', 'imageRights', 'testVersion', 'disclaimer', 'changes'] as const;
+
 export default function TermsPage() {
   const t = useTranslations('termsPage');
 
@@ -18,53 +20,14 @@ export default function TermsPage() {
 
           {/* Sections */}
           <div className="space-y-12">
-            {/* Agreement */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.agreement.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.agreement.content')}
-              </p>
-            </section>
-
-            {/* Service */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.service.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.service.content')}
-              </p>
-            </section>
-
-            {/* Image Rights */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.imageRights.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.imageRights.content')}
-              </p>
-            </section>
-
-            {/* Test Version */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.testVersion.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.testVersion.content')}
-              </p>
-            </section>
-
-            {/* Disclaimer */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.disclaimer.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.disclaimer.content')}
-              </p>
-            </section>
-
-            {/* Changes */}
-            <section>
-              <h2 className="text-2xl font-bold mb-4">{t('sections.changes.title')}</h2>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {t('sections.changes.content')}
-              </p>
-            </section>
+            {SECTION_KEYS.map((key) => (
+              <section key={key}>
+                <h2 className="text-2xl font-bold mb-4">{t(`sections.${key}.title`)}</h2>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {t(`sections.${key}.content`)}
+                </p>
+              </section>
+            ))}
           </div>
         </div>
       </main>

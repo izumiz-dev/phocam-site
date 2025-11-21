@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface TermsModalProps {
   isOpen: boolean;
@@ -26,6 +26,18 @@ export default function TermsModal({ isOpen, onClose, onAccept }: TermsModalProp
     setIsChecked(false); // Reset on close
   };
 
+  // Handle Escape key press for accessibility
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -42,6 +54,9 @@ export default function TermsModal({ isOpen, onClose, onAccept }: TermsModalProp
           {/* Modal */}
           <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="terms-modal-title"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -50,7 +65,9 @@ export default function TermsModal({ isOpen, onClose, onAccept }: TermsModalProp
             >
               {/* Header */}
               <div className="px-8 py-6 border-b border-gray-200 dark:border-gray-800">
-                <h2 className="text-2xl md:text-3xl font-bold">{t('title')}</h2>
+                <h2 id="terms-modal-title" className="text-2xl md:text-3xl font-bold">
+                  {t('title')}
+                </h2>
               </div>
 
               {/* Content */}
@@ -90,6 +107,7 @@ export default function TermsModal({ isOpen, onClose, onAccept }: TermsModalProp
                     type="checkbox"
                     checked={isChecked}
                     onChange={(e) => setIsChecked(e.target.checked)}
+                    aria-label={t('checkboxLabel')}
                     className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500 cursor-pointer"
                   />
                   <span className="text-sm font-medium group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">

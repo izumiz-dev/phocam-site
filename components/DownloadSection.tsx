@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { DOWNLOAD_URLS } from '@/config/download';
 import TermsModal from './TermsModal';
 
@@ -16,23 +16,23 @@ export default function DownloadSection() {
 
   const isUrlAvailable = (url: string) => url && url !== '' && url !== '#';
 
-  const handleDownloadClick = (url: string) => {
+  const handleDownloadClick = useCallback((url: string) => {
     setPendingDownloadUrl(url);
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const handleAcceptTerms = () => {
+  const handleAcceptTerms = useCallback(() => {
     if (pendingDownloadUrl) {
       window.location.href = pendingDownloadUrl;
     }
     setIsModalOpen(false);
     setPendingDownloadUrl(null);
-  };
+  }, [pendingDownloadUrl]);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = useCallback(() => {
     setIsModalOpen(false);
     setPendingDownloadUrl(null);
-  };
+  }, []);
 
   return (
     <section id="download" className="py-32 px-6">
