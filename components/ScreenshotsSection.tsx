@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface Screenshot {
@@ -20,6 +20,29 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
   const t = useTranslations('screenshots');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || screenshots.length <= 1) return;
+
+    const checkScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+    };
+
+    checkScroll();
+    container.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+
+    return () => {
+      container.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, [screenshots.length]);
 
   // If no screenshots are provided, show placeholder
   if (screenshots.length === 0) {
@@ -64,11 +87,53 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
           <p className="text-xl text-gray-600 dark:text-gray-400">{t('subtitle')}</p>
         </motion.div>
 
-        <div className={
-          screenshots.length === 1
-            ? 'grid grid-cols-1 max-w-md mx-auto gap-8'
-            : 'flex flex-row overflow-x-auto gap-4 px-6 py-4 -mx-6 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] md:gap-8 md:px-8 md:-mx-8 md:[mask-image:linear-gradient(to_right,transparent_0%,black_3%,black_97%,transparent_100%)]'
-        }>
+        <div className="relative">
+          {/* Left Arrow - Mobile Only */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showLeftArrow ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none"
+          >
+            <div className="bg-black/40 dark:bg-white/40 backdrop-blur-sm rounded-full p-3 shadow-lg">
+              <svg
+                className="w-6 h-6 text-white dark:text-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              </svg>
+            </div>
+          </motion.div>
+
+          {/* Right Arrow - Mobile Only */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showRightArrow ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-10 pointer-events-none"
+          >
+            <div className="bg-black/40 dark:bg-white/40 backdrop-blur-sm rounded-full p-3 shadow-lg">
+              <svg
+                className="w-6 h-6 text-white dark:text-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </motion.div>
+
+          <div
+            ref={scrollContainerRef}
+            className={
+              screenshots.length === 1
+                ? 'grid grid-cols-1 max-w-md mx-auto gap-8'
+                : 'flex flex-row overflow-x-auto gap-4 px-6 py-4 -mx-6 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] md:gap-8 md:px-8 md:-mx-8 md:[mask-image:linear-gradient(to_right,transparent_0%,black_3%,black_97%,transparent_100%)]'
+            }
+          >
           {screenshots.map((screenshot, index) => (
             <motion.div
               key={screenshot.id}
@@ -87,6 +152,7 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
               />
             </motion.div>
           ))}
+          </div>
         </div>
       </div>
     </section>
