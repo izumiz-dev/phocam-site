@@ -10,7 +10,7 @@ export const DOWNLOAD_URLS = {
    * Example: 'https://testflight.apple.com/join/YOUR_CODE'
    * Leave empty ('') to show "Coming Soon"
    */
-  TESTFLIGHT: '',
+  TESTFLIGHT: 'https://testflight.apple.com/join/NQjYVUjX',
 
   /**
    * Direct download URL for Android APK
