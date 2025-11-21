@@ -67,9 +67,7 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
         <div className={
           screenshots.length === 1
             ? 'grid grid-cols-1 max-w-md mx-auto gap-8'
-            : screenshots.length === 2
-            ? 'grid grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto gap-8'
-            : 'grid grid-cols-1 gap-8 md:flex md:flex-row md:overflow-x-auto md:gap-8 md:px-8 md:py-4 md:-mx-8 md:[&::-webkit-scrollbar]:hidden md:[scrollbar-width:none] md:[mask-image:linear-gradient(to_right,transparent_0%,black_3%,black_97%,transparent_100%)]'
+            : 'flex flex-row overflow-x-auto gap-4 px-6 py-4 -mx-6 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] md:gap-8 md:px-8 md:-mx-8 md:[mask-image:linear-gradient(to_right,transparent_0%,black_3%,black_97%,transparent_100%)]'
         }>
           {screenshots.map((screenshot, index) => (
             <motion.div
@@ -78,7 +76,7 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               whileHover={{ scale: 1.05, y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative aspect-[9/19] rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.4)] md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] ring-1 ring-black/10 dark:ring-white/10 ${screenshots.length >= 3 ? 'md:w-80 md:flex-shrink-0' : ''} md:cursor-pointer transition-shadow duration-300`}
+              className={`relative aspect-[9/19] rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.4)] md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] ring-1 ring-black/10 dark:ring-white/10 ${screenshots.length === 1 ? '' : screenshots.length === 2 ? 'w-[85vw] md:w-96 flex-shrink-0' : 'w-[85vw] md:w-80 flex-shrink-0'} md:cursor-pointer transition-shadow duration-300`}
             >
               <Image
                 src={`/images/${screenshot.filename}`}
