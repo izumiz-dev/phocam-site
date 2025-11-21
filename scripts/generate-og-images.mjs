@@ -1,29 +1,19 @@
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
-import { readFile, writeFile } from 'fs/promises';
+import { readFile, writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 
-// Locale-specific text content
-const content = {
-  ja: {
-    title: 'フォトカードと一緒に',
-    subtitle: '写真を撮ろう',
-    description: '推しと一緒に、毎日をもっと特別に',
-  },
-  en: {
-    title: 'Capture Moments',
-    subtitle: 'with Your Photocard',
-    description: 'Make every day special with your bias',
-  },
-  ko: {
-    title: '포토카드와 함께',
-    subtitle: '사진을 찍으세요',
-    description: '내 최애와 함께, 매일을 더 특별하게',
-  },
-};
-
 async function generateOGImage(locale) {
-  const text = content[locale];
+  // Load locale-specific messages
+  const messagesPath = join('./messages', `${locale}.json`);
+  const messages = JSON.parse(await readFile(messagesPath, 'utf-8'));
+
+  // Use hero section text for OG images
+  const text = {
+    title: locale === 'ja' ? 'フォトカードと一緒に' : locale === 'ko' ? '포토카드와 함께' : 'Capture Moments',
+    subtitle: locale === 'ja' ? '写真を撮ろう' : locale === 'ko' ? '사진을 찍으세요' : 'with Your Photocard',
+    description: messages.hero.subtitle,
+  };
 
   // Load fonts based on locale
   let fontData;
@@ -204,6 +194,9 @@ async function generateOGImage(locale) {
 
 // Generate for all locales
 async function main() {
+  // Ensure output directory exists
+  await mkdir('./public/og', { recursive: true });
+
   const locales = ['ja', 'en', 'ko'];
 
   for (const locale of locales) {
