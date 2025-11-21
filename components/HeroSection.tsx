@@ -4,8 +4,13 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  appIcon?: string | null;
+}
+
+export default function HeroSection({ appIcon }: HeroSectionProps) {
   const t = useTranslations('hero');
   const params = useParams();
   const currentLocale = params.locale as string;
@@ -13,6 +18,26 @@ export default function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 pt-16">
       <div className="max-w-4xl mx-auto text-center">
+        {/* App Icon */}
+        {appIcon && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 flex justify-center"
+          >
+            <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-3xl overflow-hidden shadow-2xl">
+              <Image
+                src={appIcon}
+                alt="Phocam App Icon"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
+        )}
+
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
