@@ -1,0 +1,183 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+
+interface Screenshot {
+  id: number;
+  filename: string;
+  alt: string;
+}
+
+interface ScreenshotsSectionProps {
+  screenshots: Screenshot[];
+}
+
+export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionProps) {
+  const t = useTranslations('screenshots');
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || screenshots.length <= 1) return;
+
+    const checkScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+    };
+
+    checkScroll();
+    container.addEventListener('scroll', checkScroll);
+    window.addEventListener('resize', checkScroll);
+
+    return () => {
+      container.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, [screenshots.length]);
+
+  const scrollToNext = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const firstChild = container.firstElementChild as HTMLElement;
+    if (!firstChild) return;
+    const itemWidth = firstChild.offsetWidth;
+    const gap = parseInt(getComputedStyle(container).gap || '16');
+    const scrollAmount = itemWidth + gap;
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  };
+
+  const scrollToPrev = () => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const firstChild = container.firstElementChild as HTMLElement;
+    if (!firstChild) return;
+    const itemWidth = firstChild.offsetWidth;
+    const gap = parseInt(getComputedStyle(container).gap || '16');
+    const scrollAmount = itemWidth + gap;
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  };
+
+  // If no screenshots are provided, show placeholder
+  if (screenshots.length === 0) {
+    return (
+      <section className="py-32 px-6 bg-gray-50 dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-4">{t('title')}</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400">{t('subtitle')}</p>
+          </motion.div>
+
+          <div className="text-center text-gray-500 dark:text-gray-600 py-20">
+            <div className="text-6xl mb-4">📱</div>
+            <p className="text-lg">
+              No screenshots yet
+              <br />
+              <span className="text-sm">(Add images to public/images/)</span>
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="py-32 px-6 bg-gray-50 dark:bg-gray-950">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold mb-4">{t('title')}</h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400">{t('subtitle')}</p>
+        </motion.div>
+
+        <div className="relative">
+          {/* Left Arrow */}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showLeftArrow ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={scrollToPrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 dark:bg-white/40 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-black/60 dark:hover:bg-white/60 transition-colors disabled:opacity-0"
+            disabled={!showLeftArrow}
+            aria-label="Previous screenshot"
+          >
+            <svg
+              className="w-6 h-6 text-white dark:text-black"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
+
+          {/* Right Arrow */}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showRightArrow ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={scrollToNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 dark:bg-white/40 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-black/60 dark:hover:bg-white/60 transition-colors disabled:opacity-0"
+            disabled={!showRightArrow}
+            aria-label="Next screenshot"
+          >
+            <svg
+              className="w-6 h-6 text-white dark:text-black"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
+
+          <div
+            ref={scrollContainerRef}
+            className={
+              screenshots.length === 1
+                ? 'grid grid-cols-1 max-w-md mx-auto gap-8'
+                : 'flex flex-row overflow-x-auto gap-4 px-6 py-4 -mx-6 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [scrollbar-width:none] md:gap-8 md:px-8 md:py-4 md:-mx-8 md:[mask-image:linear-gradient(to_right,transparent_0%,black_3%,black_97%,transparent_100%)] md:justify-center'
+            }
+          >
+          {screenshots.map((screenshot, index) => (
+            <motion.div
+              key={screenshot.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className={`relative aspect-[9/19] rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.4)] ring-1 ring-black/10 dark:ring-white/10 snap-center ${screenshots.length === 1 ? '' : screenshots.length === 2 ? 'w-[85vw] md:w-80 flex-shrink-0' : 'w-[85vw] md:w-64 flex-shrink-0'}`}
+            >
+              <Image
+                src={`/images/${screenshot.filename}`}
+                alt={screenshot.alt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </motion.div>
+          ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,49 @@
+{
+  "header": {
+    "features": "特徴",
+    "download": "ダウンロード"
+  },
+  "hero": {
+    "title": "フォトカードと一緒に写真を撮ろう",
+    "subtitle": "推しと一緒に、毎日をもっと特別に",
+    "description": "Phocamは、あなたの大切なフォトカードと一緒に写真を撮影できるアプリです。マナーショットを簡単に、美しく。",
+    "downloadButton": "ダウンロード"
+  },
+  "features": {
+    "title": "できること",
+    "subtitle": "シンプルで使いやすい",
+    "multipleCards": {
+      "title": "複数のカードを追加",
+      "description": "お気に入りのフォトカードを何枚でも追加して、いつでも使えるように保存できます。"
+    },
+    "easyCapture": {
+      "title": "簡単に撮影",
+      "description": "カメラを起動して、フォトカードをオーバーレイ。サイズや位置を調整して、完璧な一枚を撮影。"
+    },
+    "flexibleSize": {
+      "title": "自由なサイズ調整",
+      "description": "0.5倍から5倍まで、シーンに合わせてフォトカードのサイズを調整できます。"
+    },
+    "shareEasily": {
+      "title": "保存・共有",
+      "description": "撮影した写真は簡単に保存・共有。SNSに投稿して、ファン仲間と楽しもう。"
+    }
+  },
+  "screenshots": {
+    "title": "スクリーンショット",
+    "subtitle": "見るだけでわかる、シンプルなインターフェース"
+  },
+  "download": {
+    "title": "今すぐダウンロード",
+    "subtitle": "iOS・Android対応",
+    "testflight": "TestFlightで試す",
+    "apk": "APKをダウンロード",
+    "testflightNote": "iOSベータ版",
+    "apkNote": "Android版",
+    "comingSoon": "準備中"
+  },
+  "footer": {
+    "description": "推しと一緒に、毎日をもっと特別に",
+    "rights": "All rights reserved."
+  }
+}
