@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint .",
-    "start": "npx serve out"
+    "start": "npx serve out",
+    "generate:og": "node scripts/generate-og-images.mjs"
   },
   "repository": {
     "type": "git",
