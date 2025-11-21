@@ -21,8 +21,8 @@
       "description": "카메라를 실행하고 포토카드를 오버레이하세요. 크기와 위치를 조정하여 완벽한 사진을 촬영하세요."
     },
     "flexibleSize": {
-      "title": "자유로운 크기 조절",
-      "description": "0.5배부터 5배까지, 장면에 맞게 포토카드 크기를 조절할 수 있습니다."
+      "title": "광각 및 줌 지원",
+      "description": "광각 렌즈부터 망원 줌까지 지원. 장면에 맞는 최적의 줌 레벨로 촬영할 수 있습니다. (지원 범위는 기기에 따라 다릅니다)"
     },
     "shareEasily": {
       "title": "저장 및 공유",
@@ -38,7 +38,7 @@
     "subtitle": "iOS 및 Android 지원",
     "testflight": "TestFlight에서 사용해보기",
     "apk": "APK 다운로드",
-    "testflightNote": "iOS 베타 버전",
+    "testflightNote": "iOS 버전",
     "apkNote": "Android 버전",
     "comingSoon": "준비중"
   },
