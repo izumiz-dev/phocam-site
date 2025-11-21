@@ -69,7 +69,7 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
             ? 'grid grid-cols-1 max-w-md mx-auto gap-8'
             : screenshots.length === 2
             ? 'grid grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto gap-8'
-            : 'grid grid-cols-1 gap-8 md:flex md:flex-row md:overflow-x-auto md:gap-8 md:px-8 md:py-4 md:-mx-8 md:[&::-webkit-scrollbar]:hidden md:[scrollbar-width:none]'
+            : 'grid grid-cols-1 gap-8 md:flex md:flex-row md:overflow-x-auto md:gap-8 md:px-8 md:py-4 md:-mx-8 md:[&::-webkit-scrollbar]:hidden md:[scrollbar-width:none] md:[mask-image:linear-gradient(to_right,transparent_0%,black_3%,black_97%,transparent_100%)]'
         }>
           {screenshots.map((screenshot, index) => (
             <motion.div
