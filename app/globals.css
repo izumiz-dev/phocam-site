@@ -33,6 +33,16 @@ body {
   text-wrap: balance;
 }
 
+/* Korean text word-break settings */
+html[lang="ko"] h1,
+html[lang="ko"] h2,
+html[lang="ko"] h3,
+html[lang="ko"] h4,
+html[lang="ko"] h5,
+html[lang="ko"] h6 {
+  word-break: keep-all;
+}
+
 /* Smooth scroll */
 html.lenis,
 html.lenis body {
