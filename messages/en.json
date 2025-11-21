@@ -44,6 +44,85 @@
   },
   "footer": {
     "description": "Make every day special with your bias",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy"
+  },
+  "termsModal": {
+    "title": "Phocam Terms of Use",
+    "imageRights": {
+      "title": "About Image Rights",
+      "line1": "Phocam allows you to use selected images as photo cards.",
+      "line2": "You are responsible for verifying that you have the rights to use images, including copyright and image rights.",
+      "line3": "The developer is not liable for any issues arising from the use of images that infringe third-party rights."
+    },
+    "testVersion": {
+      "title": "About Test Version",
+      "line1": "This app is provided as a test version and may have unexpected bugs and unstable behavior.",
+      "line2": "The developer is not liable for any damages from photo capture/save failures or loss of photo card data while using this test version."
+    },
+    "checkboxLabel": "I acknowledge the above terms",
+    "acceptButton": "Agree to Terms and Continue",
+    "cancel": "Cancel"
+  },
+  "termsPage": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last Updated",
+    "sections": {
+      "agreement": {
+        "title": "1. Agreement to Terms",
+        "content": "To use Phocam (\"the App\"), you must agree to these Terms of Use. If you do not agree to these terms, you may not use the App."
+      },
+      "service": {
+        "title": "2. Service Description",
+        "content": "The App provides a service that allows users to overlay selected images as photo cards on photos taken with their camera."
+      },
+      "imageRights": {
+        "title": "3. Image Rights",
+        "content": "Users warrant that they own or have proper authorization for all images used in the App, including copyright, image rights, and other intellectual property rights. Users bear all responsibility for any issues arising from the use of images that infringe third-party rights."
+      },
+      "testVersion": {
+        "title": "4. Test Version Usage",
+        "content": "The App is currently provided as a test version and may experience unexpected bugs or unstable behavior. The developer is not liable for any damages arising from the use of the test version, including photo capture/save failures or loss of photo card data."
+      },
+      "disclaimer": {
+        "title": "5. Disclaimer",
+        "content": "The developer is not liable for any damages arising from the use of the App, regardless of the cause. The App's services may be changed or terminated without notice."
+      },
+      "changes": {
+        "title": "6. Changes to Terms",
+        "content": "The developer may modify these terms at any time. Modified terms become effective when posted on the App or related website."
+      }
+    }
+  },
+  "privacyPage": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction",
+        "content": "Phocam (\"the App\") respects user privacy. This Privacy Policy explains how the App handles personal information."
+      },
+      "dataCollection": {
+        "title": "2. Information We Collect",
+        "content": "The App does not collect personal information. All images selected and captured by users are stored only on the user's device and are never transmitted to external servers."
+      },
+      "dataUsage": {
+        "title": "3. Use of Information",
+        "content": "The App uses selected images only to display them as photo cards. These images are processed only on the user's device and are never shared externally."
+      },
+      "dataSecurity": {
+        "title": "4. Data Security",
+        "content": "Since all data is stored on the user's device, data security depends on the user's device security settings."
+      },
+      "thirdParty": {
+        "title": "5. Third-Party Services",
+        "content": "The App does not currently use third-party analytics or advertising services."
+      },
+      "changes": {
+        "title": "6. Policy Changes",
+        "content": "This Privacy Policy may be updated as necessary. Updated policies become effective when posted on the App or related website."
+      }
+    }
   }
 }

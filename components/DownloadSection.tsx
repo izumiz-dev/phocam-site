@@ -3,15 +3,36 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { DOWNLOAD_URLS } from '@/config/download';
+import TermsModal from './TermsModal';
 
 export default function DownloadSection() {
   const t = useTranslations('download');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [pendingDownloadUrl, setPendingDownloadUrl] = useState<string | null>(null);
 
   const isUrlAvailable = (url: string) => url && url !== '' && url !== '#';
+
+  const handleDownloadClick = (url: string) => {
+    setPendingDownloadUrl(url);
+    setIsModalOpen(true);
+  };
+
+  const handleAcceptTerms = () => {
+    if (pendingDownloadUrl) {
+      window.location.href = pendingDownloadUrl;
+    }
+    setIsModalOpen(false);
+    setPendingDownloadUrl(null);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setPendingDownloadUrl(null);
+  };
 
   return (
     <section id="download" className="py-32 px-6">
@@ -40,12 +61,12 @@ export default function DownloadSection() {
               {t('testflight')}
             </p>
             {isUrlAvailable(DOWNLOAD_URLS.TESTFLIGHT) ? (
-              <a
-                href={DOWNLOAD_URLS.TESTFLIGHT}
+              <button
+                onClick={() => handleDownloadClick(DOWNLOAD_URLS.TESTFLIGHT)}
                 className="inline-block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
               >
                 TestFlight
-              </a>
+              </button>
             ) : (
               <button
                 disabled
@@ -63,12 +84,12 @@ export default function DownloadSection() {
               {t('apk')}
             </p>
             {isUrlAvailable(DOWNLOAD_URLS.APK) ? (
-              <a
-                href={DOWNLOAD_URLS.APK}
+              <button
+                onClick={() => handleDownloadClick(DOWNLOAD_URLS.APK)}
                 className="inline-block w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
               >
                 APK
-              </a>
+              </button>
             ) : (
               <button
                 disabled
@@ -80,6 +101,13 @@ export default function DownloadSection() {
           </div>
         </motion.div>
       </div>
+
+      {/* Terms Modal */}
+      <TermsModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onAccept={handleAcceptTerms}
+      />
     </section>
   );
 }
