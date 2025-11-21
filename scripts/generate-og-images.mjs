@@ -59,98 +59,115 @@ async function generateOGImage(locale) {
           height: '100%',
           width: '100%',
           display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
           background: 'linear-gradient(135deg, #fce7f3 0%, #e9d5ff 50%, #c7d2fe 100%)',
           fontFamily: locale === 'ja' ? 'NotoSansJP' : 'Pretendard',
-          padding: '80px',
+          position: 'relative',
         },
         children: [
-          // App Icon - Left side
-          iconBase64 && {
-            type: 'img',
-            props: {
-              src: iconBase64,
-              width: 200,
-              height: 200,
-              style: {
-                marginRight: 60,
-                borderRadius: 44,
-                boxShadow: '0 25px 80px rgba(0, 0, 0, 0.2)',
-              },
-            },
-          },
-          // Text content - Right side
+          // Container with fixed positioning
           {
             type: 'div',
             props: {
               style: {
                 display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
+                flexDirection: 'row',
+                alignItems: 'center',
+                position: 'absolute',
+                left: '100px',
+                top: '50%',
+                transform: 'translateY(-50%)',
               },
               children: [
-                // App Name with Gradient
+                // Text content - Left side with fixed width
                 {
                   type: 'div',
                   props: {
                     style: {
-                      fontSize: 100,
-                      fontWeight: 700,
-                      background: 'linear-gradient(90deg, #ec4899 0%, #a855f7 50%, #6366f1 100%)',
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      marginBottom: 32,
-                      letterSpacing: '-0.025em',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      width: '600px',
+                      marginRight: 70,
                     },
-                    children: 'Phocam',
+                    children: [
+                      // App Name with Gradient
+                      {
+                        type: 'div',
+                        props: {
+                          style: {
+                            fontSize: 110,
+                            fontWeight: 700,
+                            background: 'linear-gradient(90deg, #ec4899 0%, #a855f7 50%, #6366f1 100%)',
+                            backgroundClip: 'text',
+                            color: 'transparent',
+                            marginBottom: 24,
+                            letterSpacing: '-0.025em',
+                            lineHeight: 1,
+                          },
+                          children: 'Phocam',
+                        },
+                      },
+                      // Main Title
+                      {
+                        type: 'div',
+                        props: {
+                          style: {
+                            fontSize: 52,
+                            fontWeight: 700,
+                            color: '#334155',
+                            lineHeight: 1.15,
+                            marginBottom: 6,
+                          },
+                          children: text.title,
+                        },
+                      },
+                      // Subtitle
+                      {
+                        type: 'div',
+                        props: {
+                          style: {
+                            fontSize: 52,
+                            fontWeight: 700,
+                            color: '#334155',
+                            lineHeight: 1.15,
+                            marginBottom: 28,
+                          },
+                          children: text.subtitle,
+                        },
+                      },
+                      // Description
+                      {
+                        type: 'div',
+                        props: {
+                          style: {
+                            fontSize: 28,
+                            color: '#64748b',
+                            letterSpacing: '-0.01em',
+                            lineHeight: 1.3,
+                          },
+                          children: text.description,
+                        },
+                      },
+                    ],
                   },
                 },
-                // Main Title
-                {
-                  type: 'div',
+                // App Icon - Right side (larger)
+                iconBase64 && {
+                  type: 'img',
                   props: {
+                    src: iconBase64,
+                    width: 280,
+                    height: 280,
                     style: {
-                      fontSize: 50,
-                      fontWeight: 700,
-                      color: '#334155',
-                      lineHeight: 1.2,
-                      marginBottom: 8,
+                      borderRadius: 62,
+                      boxShadow: '0 30px 100px rgba(0, 0, 0, 0.25)',
                     },
-                    children: text.title,
                   },
                 },
-                // Subtitle
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: 50,
-                      fontWeight: 700,
-                      color: '#334155',
-                      lineHeight: 1.2,
-                      marginBottom: 32,
-                    },
-                    children: text.subtitle,
-                  },
-                },
-                // Description
-                {
-                  type: 'div',
-                  props: {
-                    style: {
-                      fontSize: 26,
-                      color: '#64748b',
-                      letterSpacing: '-0.01em',
-                    },
-                    children: text.description,
-                  },
-                },
-              ],
+              ].filter(Boolean),
             },
           },
-        ].filter(Boolean),
+        ],
       },
     },
     {
