@@ -48,6 +48,12 @@
     "terms": "이용약관",
     "privacy": "개인정보처리방침"
   },
+  "metadata": {
+    "title": "Phocam - 포토카드와 함께 사진을 찍으세요",
+    "description": "내 최애와 함께, 매일을 더 특별하게. Phocam은 소중한 포토카드와 함께 사진을 찍을 수 있는 앱입니다.",
+    "ogTitle": "Phocam",
+    "ogDescription": "포토카드와 함께 사진을 찍으세요 | 내 최애와 함께, 매일을 더 특별하게"
+  },
   "termsModal": {
     "title": "Phocam 이용약관",
     "imageRights": {
