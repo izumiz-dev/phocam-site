@@ -1,10 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Footer() {
   const t = useTranslations('footer');
   const currentYear = new Date().getFullYear();
+  const params = useParams();
+  const locale = params?.locale || 'ja';
 
   return (
     <footer className="border-t border-gray-200 dark:border-gray-800 py-12">
@@ -17,8 +21,16 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="text-sm text-gray-600 dark:text-gray-400">
-            © {currentYear} Phocam. {t('rights')}
+          <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
+            <Link
+              href={`/${locale}/terms`}
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              {t('terms')}
+            </Link>
+            <div className="text-gray-600 dark:text-gray-400">
+              © {currentYear} Phocam. {t('rights')}
+            </div>
           </div>
         </div>
       </div>
