@@ -74,9 +74,9 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
               key={screenshot.id}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              whileHover={{ scale: 1.05, y: -8, transition: { duration: 0.3, ease: 'easeOut' } }}
+              whileHover={{ scale: 1.08, transition: { duration: 0.3, ease: 'easeOut' } }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative aspect-[9/19] rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.4)] md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] ring-1 ring-black/10 dark:ring-white/10 ${screenshots.length === 1 ? '' : screenshots.length === 2 ? 'w-[85vw] md:w-96 flex-shrink-0' : 'w-[85vw] md:w-80 flex-shrink-0'} md:cursor-pointer transition-shadow duration-300`}
+              className={`relative aspect-[9/19] rounded-[2rem] overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.4)] md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.2)] dark:md:hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] ring-1 ring-black/10 dark:ring-white/10 ${screenshots.length === 1 ? '' : screenshots.length === 2 ? 'w-[85vw] md:w-96 flex-shrink-0' : 'w-[85vw] md:w-72 flex-shrink-0'} md:cursor-pointer md:origin-bottom transition-shadow duration-300`}
             >
               <Image
                 src={`/images/${screenshot.filename}`}
