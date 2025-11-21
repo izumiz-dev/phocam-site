@@ -39,7 +39,8 @@
     "testflight": "Try on TestFlight",
     "apk": "Download APK",
     "testflightNote": "iOS Beta",
-    "apkNote": "Android Version"
+    "apkNote": "Android Version",
+    "comingSoon": "Coming Soon"
   },
   "footer": {
     "description": "Make every day special with your bias",

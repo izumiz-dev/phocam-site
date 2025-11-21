@@ -39,7 +39,8 @@
     "testflight": "TestFlightで試す",
     "apk": "APKをダウンロード",
     "testflightNote": "iOSベータ版",
-    "apkNote": "Android版"
+    "apkNote": "Android版",
+    "comingSoon": "準備中"
   },
   "footer": {
     "description": "推しと一緒に、毎日をもっと特別に",

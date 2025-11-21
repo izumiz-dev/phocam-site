@@ -8,12 +8,14 @@ export const DOWNLOAD_URLS = {
   /**
    * TestFlight URL for iOS beta testing
    * Example: 'https://testflight.apple.com/join/YOUR_CODE'
+   * Leave empty ('') to show "Coming Soon"
    */
-  TESTFLIGHT: '#',
+  TESTFLIGHT: '',
 
   /**
    * Direct download URL for Android APK
    * Example: 'https://example.com/downloads/phocam.apk'
+   * Leave empty ('') to show "Coming Soon"
    */
-  APK: '#',
+  APK: '',
 } as const;

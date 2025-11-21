@@ -39,7 +39,8 @@
     "testflight": "TestFlight에서 사용해보기",
     "apk": "APK 다운로드",
     "testflightNote": "iOS 베타 버전",
-    "apkNote": "Android 버전"
+    "apkNote": "Android 버전",
+    "comingSoon": "준비중"
   },
   "footer": {
     "description": "내 최애와 함께, 매일을 더 특별하게",

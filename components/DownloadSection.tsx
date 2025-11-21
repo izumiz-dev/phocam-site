@@ -11,6 +11,8 @@ export default function DownloadSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
+  const isUrlAvailable = (url: string) => url && url !== '' && url !== '#';
+
   return (
     <section id="download" className="py-32 px-6">
       <div className="max-w-4xl mx-auto">
@@ -38,16 +40,20 @@ export default function DownloadSection() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
               {t('testflightNote')}
             </p>
-            <a
-              href={DOWNLOAD_URLS.TESTFLIGHT}
-              className="inline-block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
-            >
-              TestFlight
-            </a>
-            {DOWNLOAD_URLS.TESTFLIGHT === '#' && (
-              <p className="text-xs text-gray-500 dark:text-gray-500 mt-3 text-center">
-                *Add your TestFlight link in config/download.ts
-              </p>
+            {isUrlAvailable(DOWNLOAD_URLS.TESTFLIGHT) ? (
+              <a
+                href={DOWNLOAD_URLS.TESTFLIGHT}
+                className="inline-block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
+              >
+                TestFlight
+              </a>
+            ) : (
+              <button
+                disabled
+                className="w-full bg-gray-400 dark:bg-gray-600 text-white px-6 py-3 rounded-full text-center font-semibold cursor-not-allowed opacity-60"
+              >
+                {t('comingSoon')}
+              </button>
             )}
           </div>
 
@@ -58,16 +64,20 @@ export default function DownloadSection() {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
               {t('apkNote')}
             </p>
-            <a
-              href={DOWNLOAD_URLS.APK}
-              className="inline-block w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
-            >
-              APK
-            </a>
-            {DOWNLOAD_URLS.APK === '#' && (
-              <p className="text-xs text-gray-500 dark:text-gray-500 mt-3 text-center">
-                *Add your APK download link in config/download.ts
-              </p>
+            {isUrlAvailable(DOWNLOAD_URLS.APK) ? (
+              <a
+                href={DOWNLOAD_URLS.APK}
+                className="inline-block w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
+              >
+                APK
+              </a>
+            ) : (
+              <button
+                disabled
+                className="w-full bg-gray-400 dark:bg-gray-600 text-white px-6 py-3 rounded-full text-center font-semibold cursor-not-allowed opacity-60"
+              >
+                {t('comingSoon')}
+              </button>
             )}
           </div>
         </motion.div>
