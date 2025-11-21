@@ -1,31 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --color-background-light: #ffffff;
+  --color-foreground-light: #1d1d1f;
+  --color-background-dark: #000000;
+  --color-foreground-dark: #f5f5f7;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #1d1d1f;
+  --background: var(--color-background-light);
+  --foreground: var(--color-foreground-light);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000000;
-    --foreground: #f5f5f7;
+    --background: var(--color-background-dark);
+    --foreground: var(--color-foreground-dark);
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@utility text-balance {
+  text-wrap: balance;
 }
 
 /* Smooth scroll */
