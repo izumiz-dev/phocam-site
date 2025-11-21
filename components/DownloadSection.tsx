@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { DOWNLOAD_URLS } from '@/config/download';
 
 export default function DownloadSection() {
   const t = useTranslations('download');
@@ -38,14 +39,16 @@ export default function DownloadSection() {
               {t('testflightNote')}
             </p>
             <a
-              href="#"
+              href={DOWNLOAD_URLS.TESTFLIGHT}
               className="inline-block w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
             >
               TestFlight
             </a>
-            <p className="text-xs text-gray-500 dark:text-gray-500 mt-3 text-center">
-              *Add your TestFlight link
-            </p>
+            {DOWNLOAD_URLS.TESTFLIGHT === '#' && (
+              <p className="text-xs text-gray-500 dark:text-gray-500 mt-3 text-center">
+                *Add your TestFlight link in config/download.ts
+              </p>
+            )}
           </div>
 
           {/* APK */}
@@ -56,14 +59,16 @@ export default function DownloadSection() {
               {t('apkNote')}
             </p>
             <a
-              href="#"
+              href={DOWNLOAD_URLS.APK}
               className="inline-block w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full text-center font-semibold transition-colors"
             >
               APK
             </a>
-            <p className="text-xs text-gray-500 dark:text-gray-500 mt-3 text-center">
-              *Add your APK download link
-            </p>
+            {DOWNLOAD_URLS.APK === '#' && (
+              <p className="text-xs text-gray-500 dark:text-gray-500 mt-3 text-center">
+                *Add your APK download link in config/download.ts
+              </p>
+            )}
           </div>
         </motion.div>
       </div>
