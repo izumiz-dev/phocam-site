@@ -5,12 +5,20 @@ import { getRequestConfig } from 'next-intl/server';
 export const locales = ['ja', 'en', 'ko'] as const;
 export const defaultLocale = 'ja' as const;
 
-export default getRequestConfig(async ({ locale }) => {
-  // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale as any)) notFound();
+export default getRequestConfig(async ({ requestLocale }) => {
+  // Get the locale - this will be provided by Next.js
+  const locale = await requestLocale;
+
+  // Validate locale
+  if (!locale || !locales.includes(locale as any)) {
+    return {
+      locale: defaultLocale,
+      messages: (await import(`../messages/${defaultLocale}.json`)).default
+    };
+  }
 
   return {
-    locale: locale as string,
+    locale,
     messages: (await import(`../messages/${locale}.json`)).default
   };
 });
