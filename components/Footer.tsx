@@ -22,20 +22,12 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col md:flex-row items-center gap-4 text-sm">
-            <div className="flex gap-4">
-              <Link
-                href={`/${locale}/terms`}
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                {t('terms')}
-              </Link>
-              <Link
-                href={`/${locale}/privacy`}
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                {t('privacy')}
-              </Link>
-            </div>
+            <Link
+              href={`/${locale}/terms`}
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              {t('terms')}
+            </Link>
             <div className="text-gray-600 dark:text-gray-400">
               © {currentYear} Phocam. {t('rights')}
             </div>
