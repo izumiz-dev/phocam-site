@@ -48,6 +48,12 @@
     "terms": "利用規約",
     "privacy": "プライバシーポリシー"
   },
+  "metadata": {
+    "title": "Phocam - フォトカードと一緒に写真を撮ろう",
+    "description": "推しと一緒に、毎日をもっと特別に。Phocamは、あなたの大切なフォトカードと一緒に写真を撮影できるアプリです。",
+    "ogTitle": "Phocam",
+    "ogDescription": "フォトカードと一緒に写真を撮ろう｜推しと一緒に、毎日をもっと特別に"
+  },
   "termsModal": {
     "title": "Phocamの利用条件について",
     "imageRights": {

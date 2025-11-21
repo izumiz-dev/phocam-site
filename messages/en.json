@@ -48,6 +48,12 @@
     "terms": "Terms of Use",
     "privacy": "Privacy Policy"
   },
+  "metadata": {
+    "title": "Phocam - Capture Moments with Your Photocard",
+    "description": "Make every day special with your bias. Phocam lets you take photos with your precious photocards.",
+    "ogTitle": "Phocam",
+    "ogDescription": "Capture Moments with Your Photocard | Make every day special with your bias"
+  },
   "termsModal": {
     "title": "Phocam Terms of Use",
     "imageRights": {
