@@ -35,10 +35,9 @@ export default function DownloadSection() {
         >
           {/* TestFlight */}
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900 p-8 rounded-3xl border border-blue-200 dark:border-blue-800">
-            <div className="text-5xl mb-4"></div>
-            <h3 className="text-2xl font-bold mb-2">{t('testflight')}</h3>
+            <h3 className="text-2xl font-bold mb-2">{t('testflightNote')}</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              {t('testflightNote')}
+              {t('testflight')}
             </p>
             {isUrlAvailable(DOWNLOAD_URLS.TESTFLIGHT) ? (
               <a
@@ -59,10 +58,9 @@ export default function DownloadSection() {
 
           {/* APK */}
           <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900 p-8 rounded-3xl border border-green-200 dark:border-green-800">
-            <div className="text-5xl mb-4">🤖</div>
-            <h3 className="text-2xl font-bold mb-2">{t('apk')}</h3>
+            <h3 className="text-2xl font-bold mb-2">{t('apkNote')}</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-              {t('apkNote')}
+              {t('apk')}
             </p>
             {isUrlAvailable(DOWNLOAD_URLS.APK) ? (
               <a

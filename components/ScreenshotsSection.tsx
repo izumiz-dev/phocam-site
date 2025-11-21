@@ -64,14 +64,20 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
           <p className="text-xl text-gray-600 dark:text-gray-400">{t('subtitle')}</p>
         </motion.div>
 
-        <div className={`grid grid-cols-1 ${screenshots.length === 1 ? 'md:grid-cols-1 max-w-md mx-auto' : screenshots.length === 2 ? 'md:grid-cols-2 max-w-3xl mx-auto' : 'md:grid-cols-3'} gap-8`}>
+        <div className={
+          screenshots.length === 1
+            ? 'grid grid-cols-1 max-w-md mx-auto gap-8'
+            : screenshots.length === 2
+            ? 'grid grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto gap-8'
+            : 'flex md:overflow-x-auto md:gap-8 md:pb-4 grid grid-cols-1 gap-8 md:grid-cols-none'
+        }>
           {screenshots.map((screenshot, index) => (
             <motion.div
               key={screenshot.id}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative aspect-[9/19] bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 rounded-3xl overflow-hidden shadow-2xl"
+              className={`relative aspect-[9/19] bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-900 rounded-3xl overflow-hidden shadow-2xl ${screenshots.length >= 3 ? 'md:w-80 md:flex-shrink-0' : ''}`}
             >
               <Image
                 src={`/images/${screenshot.filename}`}
