@@ -69,7 +69,7 @@ export default function ScreenshotsSection({ screenshots }: ScreenshotsSectionPr
             ? 'grid grid-cols-1 max-w-md mx-auto gap-8'
             : screenshots.length === 2
             ? 'grid grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto gap-8'
-            : 'flex md:overflow-x-auto md:gap-8 md:pb-4 grid grid-cols-1 gap-8 md:grid-cols-none'
+            : 'grid grid-cols-1 gap-8 md:flex md:flex-row md:overflow-x-auto md:gap-8 md:pb-4'
         }>
           {screenshots.map((screenshot, index) => (
             <motion.div
