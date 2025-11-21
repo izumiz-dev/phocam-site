@@ -59,84 +59,95 @@ async function generateOGImage(locale) {
           height: '100%',
           width: '100%',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
           background: 'linear-gradient(135deg, #fce7f3 0%, #e9d5ff 50%, #c7d2fe 100%)',
           fontFamily: locale === 'ja' ? 'NotoSansJP' : 'Pretendard',
+          padding: '80px',
         },
         children: [
-          // App Icon
+          // App Icon - Left side
           iconBase64 && {
             type: 'img',
             props: {
               src: iconBase64,
-              width: 120,
-              height: 120,
+              width: 200,
+              height: 200,
               style: {
-                marginBottom: 40,
-                borderRadius: 27,
-                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15)',
+                marginRight: 60,
+                borderRadius: 44,
+                boxShadow: '0 25px 80px rgba(0, 0, 0, 0.2)',
               },
             },
           },
-          // App Name with Gradient
+          // Text content - Right side
           {
             type: 'div',
             props: {
               style: {
-                fontSize: 100,
-                fontWeight: 700,
-                background: 'linear-gradient(90deg, #ec4899 0%, #a855f7 50%, #6366f1 100%)',
-                backgroundClip: 'text',
-                color: 'transparent',
-                marginBottom: 40,
-                letterSpacing: '-0.025em',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
               },
-              children: 'Phocam',
-            },
-          },
-          // Main Title
-          {
-            type: 'div',
-            props: {
-              style: {
-                fontSize: 56,
-                fontWeight: 700,
-                color: '#334155',
-                textAlign: 'center',
-                lineHeight: 1.2,
-                marginBottom: 12,
-              },
-              children: text.title,
-            },
-          },
-          // Subtitle
-          {
-            type: 'div',
-            props: {
-              style: {
-                fontSize: 56,
-                fontWeight: 700,
-                color: '#334155',
-                textAlign: 'center',
-                lineHeight: 1.2,
-                marginBottom: 40,
-              },
-              children: text.subtitle,
-            },
-          },
-          // Description
-          {
-            type: 'div',
-            props: {
-              style: {
-                fontSize: 28,
-                color: '#64748b',
-                textAlign: 'center',
-                letterSpacing: '-0.01em',
-              },
-              children: text.description,
+              children: [
+                // App Name with Gradient
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      fontSize: 100,
+                      fontWeight: 700,
+                      background: 'linear-gradient(90deg, #ec4899 0%, #a855f7 50%, #6366f1 100%)',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      marginBottom: 32,
+                      letterSpacing: '-0.025em',
+                    },
+                    children: 'Phocam',
+                  },
+                },
+                // Main Title
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      fontSize: 50,
+                      fontWeight: 700,
+                      color: '#334155',
+                      lineHeight: 1.2,
+                      marginBottom: 8,
+                    },
+                    children: text.title,
+                  },
+                },
+                // Subtitle
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      fontSize: 50,
+                      fontWeight: 700,
+                      color: '#334155',
+                      lineHeight: 1.2,
+                      marginBottom: 32,
+                    },
+                    children: text.subtitle,
+                  },
+                },
+                // Description
+                {
+                  type: 'div',
+                  props: {
+                    style: {
+                      fontSize: 26,
+                      color: '#64748b',
+                      letterSpacing: '-0.01em',
+                    },
+                    children: text.description,
+                  },
+                },
+              ],
             },
           },
         ].filter(Boolean),
