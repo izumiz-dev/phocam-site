@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "eslint ."
     "start": "npx serve out",
-    "lint": "next lint"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "tailwindcss": "^4.1.17"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
