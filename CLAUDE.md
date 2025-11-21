@@ -6,7 +6,7 @@
 
 K-POPファンのためのマナーショットアプリ「Phocam」の公式ウェブサイト
 
-- **フレームワーク**: Next.js 16 (App Router)
+- **フレームワーク**: Next.js 16.0.3 (App Router) ※最新のCanaryリリース版を使用
 - **言語**: TypeScript
 - **スタイリング**: Tailwind CSS 4.x
 - **アニメーション**: Framer Motion
@@ -47,13 +47,17 @@ phocam-site/
 │   ├── ScreenshotsSection.tsx # スクリーンショット
 │   ├── DownloadSection.tsx # ダウンロードCTA
 │   └── SmoothScroll.tsx   # スムーズスクロールProvider
+├── config/                # 設定ファイル
+│   └── download.ts        # ダウンロードリンク設定
+├── i18n/                  # 国際化設定
+│   └── request.ts         # next-intlリクエスト設定
 ├── messages/              # 国際化翻訳ファイル
 │   ├── ja.json           # 日本語
 │   ├── en.json           # 英語
 │   └── ko.json           # 韓国語
-├── public/
-│   └── images/           # 画像アセット
-└── i18n.ts               # 国際化設定
+├── middleware.ts          # Next.jsミドルウェア（ロケール処理）
+└── public/
+    └── images/           # 画像アセット
 ```
 
 ## 開発ワークフロー
@@ -152,8 +156,11 @@ npm run build
 ### Lintエラー
 
 ```bash
-# 自動修正を試みる（ESLint 9では未サポート）
+# Lintチェック
 npm run lint
+
+# 自動修正を試みる（ESLint 9対応）
+npm run lint -- --fix
 
 # 個別に修正が必要な場合、エディタのESLint拡張機能を使用
 ```
